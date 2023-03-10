@@ -1,0 +1,16 @@
+{
+  "React": "This is React",
+  "Home": "Начало",
+  "Contact": "Контакни",
+  "About": "За нас",
+  "username": {
+    "label": "потребител",
+    "placeholder": "placeholder..."
+  },
+  "password": {
+    "label": "парола",
+    "placeholder": "******"
+  },
+  "location": "Enter the location",
+  "Address": "Enter the address"
+}
