@@ -14,7 +14,7 @@ const LanguageSelector = (): JSX.Element => {
 
   return (
     <select defaultValue={selectedLanguage} onChange={chooseLanguage}>
-      <option value="bg">Bulgarian</option>
+      <option value="bg">&#127463</option>
       <option value="en">English</option>
     </select>
   );
