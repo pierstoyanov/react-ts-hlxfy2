@@ -9,7 +9,7 @@ import i18n from './i18n';
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
 
-import LoadingScreen from './components/LoadingScreen';
+import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
 root.render(
   <BrowserRouter>
