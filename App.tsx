@@ -9,7 +9,7 @@ import * as Msg from './components/notifications';
 // i18n
 import { useTranslation, Trans } from 'react-i18next';
 
-import { LanguageSelector } from './components/LanguageSelector';
+import LanguageSelector from './components/LanguageSelector';
 
 export default function App() {
   // i18n
