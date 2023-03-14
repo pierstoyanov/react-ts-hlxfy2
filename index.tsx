@@ -6,8 +6,9 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import i18n from './i18n';
 
+
 const rootElement = document.getElementById('root');
-const root = createRoot(rootElement);
+const root = createRoot(rootElement as HTMLElement);
 
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
