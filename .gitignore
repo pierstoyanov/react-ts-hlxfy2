@@ -1,5 +1,9 @@
 node_modules/
 backup
+.env
+.env.production
+.env.staging
+.env.testing
 
 # Logs
 logs
