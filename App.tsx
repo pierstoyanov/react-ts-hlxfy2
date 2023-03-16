@@ -6,6 +6,10 @@ import Home from './components/home/Home';
 import * as Layout from './components/layout';
 import * as Msg from './components/notifications';
 
+// Environment variables: 
+// webpack -> process.env.
+// vite buldler -> import.meta.env.
+
 // i18n
 import { useTranslation, Trans } from 'react-i18next';
 
@@ -20,8 +24,7 @@ export default function App() {
       <header>
         <div>{<Layout.Navbar />}</div>
       </header>
-
-      {<LanguageSelector />}
+      
       {<Msg.CookieConsent />}
 
       <Routes>
