@@ -18,6 +18,7 @@ const Transition = React.forwardRef(function Transition(
 });
 
 const CookieConsent = (): JSX.Element => {
+  
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -30,9 +31,9 @@ const CookieConsent = (): JSX.Element => {
 
   return (
     <div>
-      {/* <Button variant="outlined" onClick={handleClickOpen}>
+      <Button variant="outlined" onClick={handleClickOpen}>
         Slide in alert dialog
-      </Button> */}
+      </Button>
       <Dialog
         open={open}
         TransitionComponent={Transition}
