@@ -3,14 +3,23 @@
   "Home": "Home",
   "Contact": "Contact Us",
   "About": "About Us",
+  "code": "EU",
+  "flagUnicode": "\uF1FA\uF1F8",
   "username": {
     "label": "username",
     "placeholder": "placeholder..."
   },
   "password": {
-    "label": "password",
-    "placeholder": "******"
+    "label": "Password",
+    "placeholder": "******",
+    "forgotten": "Forgot password?"
   },
   "location": "Enter the location",
-  "Address": "Enter the address"
+  "Address": "Enter the address",
+  "signIn": "Sign in",
+  "signUp": "Sign in",
+  "email": "Email",
+  "rememberMe": "Remember me",
+  "noAcc": "Don't have an account? Sign Up",
+  "hasAcc": "Already have an account? Sign in"
 }

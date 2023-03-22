@@ -3,14 +3,23 @@
   "Home": "Начало",
   "Contact": "Контакти",
   "About": "За нас",
+  "code": "BG",
+  "flagUnicode": "\uF1E7\uF1EC",
   "username": {
     "label": "потребител",
-    "placeholder": "placeholder..."
+    "placeholder": "..."
   },
   "password": {
     "label": "парола",
-    "placeholder": "******"
+    "placeholder": "******",
+    "forgotten": "Забравена парола?"
   },
   "location": "Enter the location",
-  "Address": "Enter the address"
+  "Address": "Enter the address",
+  "signIn": "Вписване",
+  "signUp": "Регистрация",
+  "email": "Имейл",
+  "remembermMe": "Запомни ме",
+  "noAcc": "Нямате профил? Регистрация",
+  "hasAcc": "Имате профил? Вписване"
 }
