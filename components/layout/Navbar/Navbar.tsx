@@ -13,14 +13,15 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import LanguageSelector from '../../LanguageSelector';
-import { Divider, Link } from '@mui/material';
+import { Divider } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const pages = [
   { name: 'Home', path: "/" },  
-  { name: 'Sign In', path: "/login"},
-  { name: 'About', path: "/about"} 
+  { name: 'Sign In', path: "login"},
+  { name: 'About', path: "about"} 
 ];
-
+//  href == page reload, Link = spa
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = (): JSX.Element => {
@@ -107,7 +108,6 @@ const Navbar = (): JSX.Element => {
           {/* </Box> */}
           {/* Expanded logo & Title */}
 
-
           {/* Logo & Title (contracted) */}
           <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
@@ -163,7 +163,7 @@ const Navbar = (): JSX.Element => {
               }}
             >
               {pages.map((p) => (
-                <MenuItem key={p.name} href={p.path} onClick={handleCloseNavMenu}>
+                <MenuItem key={p.name} component={Link} to={p.path} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{p.name}</Typography>
                 </MenuItem>
               ))}
@@ -176,9 +176,8 @@ const Navbar = (): JSX.Element => {
             {pages.map((page) => (
               <>
               <Button
-                // key={page.txt}
-                // component={Link} 
-                // to={page.path}
+                key={page.name} 
+                component={Link} to={page.path}
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
@@ -190,11 +189,10 @@ const Navbar = (): JSX.Element => {
           </Box>
           {/* Navigation - expanded */}
 
-
-
         </Toolbar>
       </Container>
     </AppBar>
-    );
+  );
 };
+
 export default Navbar;
