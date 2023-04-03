@@ -9,6 +9,8 @@ import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
 import useCookie from '../../../hooks/useCookie';
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import { Tooltip } from '@mui/material';
 
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
@@ -20,6 +22,9 @@ const Transition = React.forwardRef(function Transition(
 });
 
 const CookieConsent = (): JSX.Element => {  
+  // i18n
+  const { t } = useTranslation();
+
   // useCookie hook
   const [ cookie, updateCookie ] = useCookie("consentCookie", {});
   const [ open, setOpen ] = React.useState(false);
@@ -52,6 +57,7 @@ const CookieConsent = (): JSX.Element => {
     
     updateCookie(newVars);
     setOpen(false);
+    // Dispatch consent to log
   };
 
   return (
@@ -70,21 +76,23 @@ const CookieConsent = (): JSX.Element => {
           onClose={()=>setOpen(false)}
           aria-describedby="alert-dialog-slide-description"
         >
-          <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+          <DialogTitle>{t("Cookies")}</DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-slide-description">
-              Let Google help apps determine location. This means sending
-              anonymous location data to Google, even when no apps are running.
+              {t("cookies-msg")}
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => setResultInCookie(false)}>Disagree</Button>
-            <Button onClick={() => setResultInCookie(true)}>Agree</Button>
+            <Tooltip title={t("cookies-disagree-explain")}>
+              <Button onClick={() => setResultInCookie(false)}>{t("cookies-disagree")}</Button>
+            </Tooltip>
+            <Tooltip title={t("cookies-agree-explain")}>
+              <Button onClick={() => setResultInCookie(true)}>{t("cookies-agree")}</Button>
+            </Tooltip>
           </DialogActions>
         </Dialog>
       </div>
-      )
-      
+      )  
     }</>
   );
 };

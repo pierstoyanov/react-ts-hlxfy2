@@ -21,5 +21,11 @@
   "email": "Email",
   "rememberMe": "Remember me",
   "noAcc": "Don't have an account? Sign Up",
-  "hasAcc": "Already have an account? Sign in"
+  "hasAcc": "Already have an account? Sign in",
+  "Cookies": "Cookies",
+  "cookies-msg": "This website collects cookies to deliver better user experience. You can change you choise at any time.",
+  "cookies-agree": "Agree",
+  "cookies-agree-explain": "Functional and statisticals cookies will be used.",
+  "disagree": "Disagree",
+  "cookies-disagree-explain": "Only necessary functional cookies will be used. No user information is collected."
 }
