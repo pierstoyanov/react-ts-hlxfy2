@@ -33,7 +33,7 @@ const LanguageSelector = (): JSX.Element => {
     <Box sx = {{
       display: {xs: "flex", md: "none" }
     }}>
-      <Select defaultValue={selectedLanguage} onChange={chooseLanguage}>
+      <Select value={selectedLanguage} onChange={chooseLanguage}>
         <MenuItem value="bg">BG</MenuItem>
         <MenuItem value="en">EN</MenuItem>
       </Select>
