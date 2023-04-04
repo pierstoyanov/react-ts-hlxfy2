@@ -4,7 +4,8 @@ import CircularProgress from '@mui/material/CircularProgress';
 
 const LoadingScreen = () => {
   return (
-    <Stack sx={{ color: 'grey.500' }} spacing={2} direction="row">
+    <Stack sx={{ color: 'grey.500' }}
+     spacing={3} direction="row" justifyContent="center">
       <CircularProgress color="secondary" />
       <CircularProgress color="success" />
       <CircularProgress color="inherit" />
