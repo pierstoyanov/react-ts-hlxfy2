@@ -29,35 +29,46 @@ const CookieConsent = (): JSX.Element => {
   const [ cookie, updateCookie ] = useCookie("consentCookie", {});
   const [ open, setOpen ] = React.useState(false);
 
-  const cookieValues = {}
 
   useEffect(() => {
     // cookie does not exist 
-    if (cookie?.messageShown === undefined)
-    {
+    if (cookie?.messageShown === undefined) {
+      console.log('foo')
       // create cookie, open dialogue
       updateCookie({
-        "messageShown": false,
-        "consent": false
+        messageShown: false,
+        consent: false
       });
 
       setOpen(true);
     }
     else if (cookie.messageShown == false) {
+      console.log('bar')
       setOpen(true)
     }
+    console.log('barfoo')
   }, []);
 
 
   const setResultInCookie = (consent: Boolean) => {
     const newVars = {
-      "messageShown": true,
-      "consent": consent
+      messageShown: true,
+      consent: consent
     }
     
     updateCookie(newVars);
     setOpen(false);
     // Dispatch consent to log
+  };
+
+  const closeDiag = () => {
+    const newVars = {
+      messageShown: true,
+      consent: false
+    }
+    
+    updateCookie(newVars);
+    setOpen(false);
   };
 
   return (
@@ -73,7 +84,7 @@ const CookieConsent = (): JSX.Element => {
           open={open}
           TransitionComponent={Transition}
           keepMounted
-          onClose={()=>setOpen(false)}
+          onClose={()=>closeDiag()}
           aria-describedby="alert-dialog-slide-description"
         >
           <DialogTitle>{t("Cookies")}</DialogTitle>
