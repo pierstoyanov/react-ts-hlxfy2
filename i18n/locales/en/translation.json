@@ -5,9 +5,15 @@
   "About": "About Us",
   "code": "EU",
   "flagUnicode": "\uF1FA\uF1F8",
-  "username": {
-    "label": "username",
-    "placeholder": "placeholder..."
+  "user": {
+    "label": "Username",
+    "placeholder": "username",
+    "fname": "First Name",
+    "lname": "Last Name"
+  },
+  "email": {
+    "label": "Email",
+    "placeholder": "user@email.com"
   },
   "password": {
     "label": "Password",
@@ -18,14 +24,14 @@
   "Address": "Enter the address",
   "signIn": "Sign in",
   "signUp": "Sign in",
-  "email": "Email",
   "rememberMe": "Remember me",
-  "noAcc": "Don't have an account? Sign Up",
-  "hasAcc": "Already have an account? Sign in",
+  "noAcc": "Don't have an account? Sign Up\u27A1",
+  "hasAcc": "Already have an account? Sign in\u27A1",
   "Cookies": "Cookies",
   "cookies-msg": "This website collects cookies to deliver better user experience. You can change you choise at any time.",
   "cookies-agree": "Agree",
   "cookies-agree-explain": "Functional and statisticals cookies will be used.",
   "disagree": "Disagree",
-  "cookies-disagree-explain": "Only necessary functional cookies will be used. No user information is collected."
+  "cookies-disagree-explain": "Only necessary functional cookies will be used. No user information is collected.",
+  "marketing-msg": "I want to receive inspiration, marketing promotions and updates via email."
 }

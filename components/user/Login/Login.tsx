@@ -9,8 +9,15 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
+import { useTranslation } from "react-i18next";
+
+import { Link as RouterLink } from "react-router-dom";
+import { CssBaseline } from "@mui/material";
+
 
 const Login = () => {
+  const { t } = useTranslation();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -22,6 +29,7 @@ const Login = () => {
 
   return (
     <Container component="main" maxWidth="sm">
+      <CssBaseline />
       <Box
         sx={{
           boxShadow: 3,
@@ -35,7 +43,7 @@ const Login = () => {
         }}
       >
         <Typography component="h1" variant="h5">
-          Sign in
+          {t("signIn")}
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
@@ -43,7 +51,7 @@ const Login = () => {
             required
             fullWidth
             id="email"
-            label="Email Address"
+            label={t("email.label")}
             name="email"
             autoComplete="email"
             autoFocus
@@ -53,14 +61,14 @@ const Login = () => {
             required
             fullWidth
             name="password"
-            label="Password"
+            label={t("password.label")}
             type="password"
             id="password"
             autoComplete="current-password"
           />
           <FormControlLabel
             control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
+            label={t("rememberMe")}
           />
           <Button
             type="submit"
@@ -68,17 +76,17 @@ const Login = () => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign In
+            {t("signIn")}
           </Button>
           <Grid container>
             <Grid item xs>
               <Link href="#" variant="body2">
-                Forgot password?
+                {t("password.forgotten")}
               </Link>
             </Grid>
             <Grid item>
-              <Link href="#" variant="body2">
-                {"Don't have an account? Sign Up"}
+              <Link component={RouterLink} to="/signup">
+                {t("noAcc")}
               </Link>
             </Grid>
           </Grid>

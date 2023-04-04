@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Link as RouterLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Copyright(props: any) {
   return (
@@ -29,6 +31,8 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function SignUp() {
+  const { t } = useTranslation();
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -44,6 +48,11 @@ export default function SignUp() {
         <CssBaseline />
         <Box
           sx={{
+            // TODO choose style same as login
+            // boxShadow: 3,
+            // borderRadius: 2,
+            // px: 4,
+            // py: 6,
             marginTop: 8,
             display: 'flex',
             flexDirection: 'column',
@@ -54,7 +63,7 @@ export default function SignUp() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            {t("signUp")}
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
@@ -65,7 +74,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label={t("user.fname")}
                   autoFocus
                 />
               </Grid>
@@ -74,7 +83,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="lastName"
-                  label="Last Name"
+                  label={t("user.lname")}
                   name="lastName"
                   autoComplete="family-name"
                 />
@@ -84,7 +93,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label={t("email.label")}
                   name="email"
                   autoComplete="email"
                 />
@@ -94,7 +103,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   name="password"
-                  label="Password"
+                  label={t("password.label")}
                   type="password"
                   id="password"
                   autoComplete="new-password"
@@ -103,7 +112,7 @@ export default function SignUp() {
               <Grid item xs={12}>
                 <FormControlLabel
                   control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
+                  label={t("marketing-msg")}
                 />
               </Grid>
             </Grid>
@@ -113,12 +122,12 @@ export default function SignUp() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              {t("signUp")}
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  Already have an account? Sign in
+                <Link component={RouterLink} to="/login">
+                {t("hasAcc")}
                 </Link>
               </Grid>
             </Grid>

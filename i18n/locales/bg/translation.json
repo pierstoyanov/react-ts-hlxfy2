@@ -5,27 +5,33 @@
   "About": "За нас",
   "code": "BG",
   "flagUnicode": "\uF1E7\uF1EC",
-  "username": {
-    "label": "потребител",
-    "placeholder": "..."
+  "user": {
+    "label": "Потребителско име",
+    "placeholder": "username",
+    "fname": "Име",
+    "lname": "Фамилия"
   },
   "password": {
-    "label": "парола",
+    "label": "Парола",
     "placeholder": "******",
     "forgotten": "Забравена парола?"
+  },
+  "email": {
+    "label": "Имейл",
+    "placeholder": " user@email.bg..."
   },
   "location": "Enter the location",
   "Address": "Enter the address",
   "signIn": "Вписване",
   "signUp": "Регистрация",
-  "email": "Имейл",
-  "remembermMe": "Запомни ме",
-  "noAcc": "Нямате профил? Регистрация",
-  "hasAcc": "Имате профил? Вписване",
+  "rememberMe": "Запомни ме",
+  "noAcc": "Нямате профил? Регистрация\u27A1",
+  "hasAcc": "Имате профил? Вписване\u27A1",
   "Cookies": "Бисквитки",
   "cookies-msg": "Тази страница използва бисквитки за подобряване на потребителсктото изживяване.",
   "cookies-agree": "Съгласявам се",
   "cookies-agree-explain": "Ще се използват функционални и статистически бисквитки.",
   "cookies-disagree": "Отказвам",
-  "cookies-disagree-explain": "Само необходимите функционални бисквитки ще се използват. Информация за потребителя не се събира."
+  "cookies-disagree-explain": "Само необходимите функционални бисквитки ще се използват. Информация за потребителя не се събира.",
+  "marketing-msg": "Желая да получавам вдъхновяваща, маркетинг и промоционална информация по имейл."
 }
