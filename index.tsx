@@ -13,9 +13,12 @@ const root = createRoot(rootElement as HTMLElement);
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 
 root.render(
+  // StrictMode - dev only, renders components twice
+  <React.StrictMode> 
   <BrowserRouter>
     <Suspense fallback={<LoadingScreen />}>
       <App />
     </Suspense>
   </BrowserRouter>
+  </React.StrictMode>
 );
