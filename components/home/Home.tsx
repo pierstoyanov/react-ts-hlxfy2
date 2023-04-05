@@ -11,7 +11,7 @@ const Home = (): JSX.Element => {
         <h1>{t('Home')}</h1>
 
         <p>{getFlagEmoji(t("code"))}</p>
-
+        
         <p>Start editing to see some magic happen :)</p>
       </div>
     </React.Fragment>

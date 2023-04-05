@@ -14,6 +14,9 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link as RouterLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth }  from '../../../firebase/firebase.config'
+import { useAuth } from '../../../contexts/AuthContext';
 
 function Copyright(props: any) {
   return (
@@ -32,14 +35,27 @@ const theme = createTheme();
 
 export default function SignUp() {
   const { t } = useTranslation();
+  const user = useAuth();
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const d = {
+      email: data.get('email')?.toString(),
+      password: data.get('password')?.toString(),
+    };
+    console.log(d);
+
+    await createUserWithEmailAndPassword(auth, d.email, d.password)
+      .then((userCredential) =>{
+        const u = userCredential.user;
+      })
+      .catch((err) => {
+        const errCode = err.code;
+        const errMsg = err.message;
+        // todo snackbar msg
+      })
   };
 
   return (
@@ -93,6 +109,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="email"
+                  type="email"
                   label={t("email.label")}
                   name="email"
                   autoComplete="email"

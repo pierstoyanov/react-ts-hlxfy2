@@ -15,16 +15,20 @@ import AdbIcon from '@mui/icons-material/Adb';
 import LanguageSelector from '../../LanguageSelector';
 import { Divider } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../../contexts/AuthContext';
 
 const pages = [
   { name: 'Home', path: "/" },  
   { name: 'Sign In', path: "login"},
   { name: 'About', path: "about"} 
 ];
+
 //  href == page reload, Link = spa
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = (): JSX.Element => {
+  const user = useAuth();
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -51,7 +55,7 @@ const Navbar = (): JSX.Element => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-
+          {user?"foo":"bar"}
           {/* User menu */}
           <Box sx={{ flexGrow: 1 }}>
             <Tooltip title="Open settings">
@@ -174,7 +178,6 @@ const Navbar = (): JSX.Element => {
           {/* Navigation - expanded */}
           <Box sx={{ flexGrow: 0, display: { xs: 'none', md: 'flex' } }}>
             {pages.map((page) => (
-              <>
               <Button
                 key={page.name} 
                 component={Link} to={page.path}
@@ -182,9 +185,8 @@ const Navbar = (): JSX.Element => {
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page.name}
-              </Button>
               <Divider orientation="vertical" color = "black" variant='middle' flexItem />
-              </>
+              </Button>
             ))}
           </Box>
           {/* Navigation - expanded */}

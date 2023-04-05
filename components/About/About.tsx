@@ -5,9 +5,11 @@ import LoadingScreen from '../LoadingScreen/LoadingScreen';
 const About = () => {
     const { t } = useTranslation();
     return (
-        <p>{t["about"]}
+        <>{t["about"]}
         {<LoadingScreen />}
-        </p>
+
+        
+        </>
     );
 };
 
