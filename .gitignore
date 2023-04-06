@@ -4,6 +4,8 @@ backup
 .env.production
 .env.staging
 .env.testing
+.firebase/
+public
 
 # Logs
 logs
@@ -29,3 +31,4 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+.firebaserc
