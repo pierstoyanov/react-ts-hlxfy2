@@ -2,13 +2,22 @@ import * as React from 'react';
 import firebase from 'firebase/app';
 import { createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { User, UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 
 // TODO
-export const AuthContext = createContext({});
+export interface IAuthContext {
+    currentUser: User | null,
+    setCurrentUser: {},
+    login: any,
+    logout: () => {},
+    signUp: any,
+    getUser: any
+};
 
-export function useAuth() {
+export const AuthContext = createContext({} as IAuthContext);
+
+export const useAuth = () => {
     return useContext(AuthContext);
 }
 
@@ -20,6 +29,7 @@ export function AuthContextProvider({children}) {
     useEffect(() => {
        auth.onAuthStateChanged((user) => {
         setCurrentUser(user);
+        console.log(`cUser in context ${currentUser}`);
         setLoading(false);
        }); 
     }, []);
@@ -40,11 +50,11 @@ export function AuthContextProvider({children}) {
         return auth.currentUser;
     }
 
-    const value = {currentUser, login, logout, signUp, getUser}
+    //const value = {currentUser, setCurrentUser, login, logout, signUp, getUser}
 
     return (
-    <AuthContext.Provider value={value}>
-        {children}
+    <AuthContext.Provider value={{ currentUser, setCurrentUser, login, signUp, logout, getUser }}>
+        {!loading && children}
     </AuthContext.Provider>
     );
 }

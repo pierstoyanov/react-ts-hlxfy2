@@ -12,7 +12,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth }  from '../../../firebase/firebase.config'
@@ -35,7 +35,8 @@ const theme = createTheme();
 
 export default function SignUp() {
   const { t } = useTranslation();
-  const user = useAuth();
+  const { setCurrentUser, signUp } = useAuth();
+  const navigate = useNavigate();
 
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -47,13 +48,15 @@ export default function SignUp() {
     };
     console.log(d);
 
-    await createUserWithEmailAndPassword(auth, d.email, d.password)
-      .then((userCredential) =>{
-        const u = userCredential.user;
+    await signUp(auth, d.email, d.password)
+      .then((userCredential) => {
+        console.log(`cUser returned promise  ${userCredential.user}`);
+        navigate('/') 
       })
       .catch((err) => {
         const errCode = err.code;
         const errMsg = err.message;
+        console.log(errCode, "\n", errMsg)
         // todo snackbar msg
       })
   };
@@ -87,7 +90,7 @@ export default function SignUp() {
                 <TextField
                   autoComplete="given-name"
                   name="firstName"
-                  required
+                  // required
                   fullWidth
                   id="firstName"
                   label={t("user.fname")}
@@ -96,7 +99,7 @@ export default function SignUp() {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  required
+                  // required
                   fullWidth
                   id="lastName"
                   label={t("user.lname")}
