@@ -27,7 +27,7 @@ const pages = [
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const Navbar = (): JSX.Element => {
-  const user = useAuth();
+  const { currentUser } = useAuth();
 
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
@@ -55,7 +55,7 @@ const Navbar = (): JSX.Element => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          {user?"foo":"bar"}
+          {currentUser != null && <>
           {/* User menu */}
           <Box sx={{ flexGrow: 1 }}>
             <Tooltip title="Open settings">
@@ -86,8 +86,10 @@ const Navbar = (): JSX.Element => {
               ))}
             </Menu>
           </Box>
-          {/* User menu */}
-          
+          {/* User menu */}</>
+          }
+
+
           {/* Expanded logo & Title */}
           {/* <Box> */}
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
