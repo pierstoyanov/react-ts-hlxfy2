@@ -1,6 +1,6 @@
 import * as React from 'react';
 import firebase from 'firebase/app';
-import { createContext, useContext, useEffect, useState } from "react";
+import { Dispatch, createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
 import { User, UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
@@ -8,11 +8,12 @@ import { User, UserCredential, createUserWithEmailAndPassword, signInWithEmailAn
 // TODO
 export interface IAuthContext {
     currentUser: User | null,
-    setCurrentUser: {},
+    setCurrentUser: Dispatch<any>,
     login: any,
-    logout: () => {},
+    logout: any,
     signUp: any,
     getUser: any
+
 };
 
 export const AuthContext = createContext({} as IAuthContext);
