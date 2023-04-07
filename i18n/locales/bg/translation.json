@@ -18,7 +18,8 @@
   },
   "email": {
     "label": "Имейл",
-    "placeholder": " user@email.bg..."
+    "placeholder": " user@email.bg...",
+    "notValid": "Моля въведете валиден имейл."
   },
   "location": "Enter the location",
   "Address": "Enter the address",
