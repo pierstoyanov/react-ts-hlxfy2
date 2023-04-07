@@ -17,6 +17,7 @@ import LanguageSelector from './components/LanguageSelector';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 import useCookie from './hooks/useCookie';
 import SignUp from './components/user/SignUp/SignUp';
+import Logout from './components/user/Logout/Logout';
 const Login = React.lazy(() => import('./components/user/Login/Login'));
 const About = React.lazy(() => import('./components/About/About'))
 
@@ -43,6 +44,7 @@ export default function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/about" element={<About />} />
         <Route path="/loading" element={<LoadingScreen />} />
+        <Route path="/logout" element={<Logout />} /> 
       </Routes>
     </div>
     <footer>
