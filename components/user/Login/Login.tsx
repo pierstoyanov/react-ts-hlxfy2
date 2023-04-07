@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -12,20 +12,46 @@ import Container from "@mui/material/Container";
 import { useTranslation } from "react-i18next";
 
 import { Link as RouterLink } from "react-router-dom";
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, Snackbar } from "@mui/material";
+import { useAuth } from "../../../contexts/AuthContext";
 
 
 const Login = () => {
   const { t } = useTranslation();
+  const [ email, setEmail ] = useState<string | undefined>(undefined);
+  const { setCurrentUser, login } = useAuth();
 
-  const handleSubmit = (event) => {
+  const regex = new RegExp('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}');
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    const d = {
       email: data.get("email"),
       password: data.get("password"),
-    });
+    }
+    console.log();
+    await login(d.email, d.password)
+      .then((userCredential) => {
+        setCurrentUser(userCredential);
+      })
+      .catch((err) => {
+        const errCode = err.code;
+        const errMsg = err.message;
+        console.log(errCode, "\n", errMsg)
+        // todo snackbar msg
+      })
   };
+
+  function checkEmail(): boolean | undefined {
+    if (email === undefined)
+    {
+      return true;
+    }
+    else if (!regex.test(email)) {
+      return false;
+    }
+  }
 
   return (
     <Container component="main" maxWidth="sm">
@@ -49,6 +75,9 @@ const Login = () => {
           <TextField
             margin="normal"
             required
+            error={checkEmail()}
+            onChange={(e) => {setEmail(e.target.value)}}
+            helperText={t("email.notValid")}
             fullWidth
             id="email"
             label={t("email.label")}

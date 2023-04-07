@@ -14,7 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, User } from 'firebase/auth';
 import { auth }  from '../../../firebase/firebase.config'
 import { useAuth } from '../../../contexts/AuthContext';
 
@@ -51,6 +51,7 @@ export default function SignUp() {
     await signUp(auth, d.email, d.password)
       .then((userCredential) => {
         console.log(`cUser returned promise  ${userCredential.user}`);
+        setCurrentUser(userCredential.user);
         navigate('/') 
       })
       .catch((err) => {
