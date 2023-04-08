@@ -46,7 +46,7 @@ export default function SignUp() {
       email: data.get('email')?.toString(),
       password: data.get('password')?.toString(),
     };
-    console.log(d);
+    console.log(d, d.email, d.password);
 
     await signUp(auth, d.email, d.password)
       .then((userCredential) => {
