@@ -18,7 +18,7 @@ import { useAuth } from "../../../contexts/AuthContext";
 
 const Login = () => {
   const { t } = useTranslation();
-  const [ email, setEmail ] = useState<string | undefined>(undefined);
+  const [ email, setEmail ] = useState<string | null>(null);
   const { setCurrentUser, login } = useAuth();
 
   const regex = new RegExp('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}');
@@ -44,13 +44,14 @@ const Login = () => {
   };
 
   function checkEmail(): boolean | undefined {
-    if (email === undefined)
+    if (email === null)
     {
       return true;
     }
     else if (!regex.test(email)) {
       return false;
     }
+    return true;
   }
 
   return (
@@ -75,7 +76,7 @@ const Login = () => {
           <TextField
             margin="normal"
             required
-            error={checkEmail()}
+            //error={checkEmail()}
             onChange={(e) => {setEmail(e.target.value)}}
             helperText={t("email.notValid")}
             fullWidth

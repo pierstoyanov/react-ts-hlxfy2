@@ -17,6 +17,7 @@ import { useTranslation } from 'react-i18next';
 import { createUserWithEmailAndPassword, User } from 'firebase/auth';
 import { auth }  from '../../../firebase/firebase.config'
 import { useAuth } from '../../../contexts/AuthContext';
+import { setLogLevel } from 'firebase/app';
 
 function Copyright(props: any) {
   return (
@@ -35,7 +36,7 @@ const theme = createTheme();
 
 export default function SignUp() {
   const { t } = useTranslation();
-  const { setCurrentUser, signUp } = useAuth();
+  const { setCurrentUser, setLoading, signUp } = useAuth();
   const navigate = useNavigate();
 
 
@@ -48,10 +49,11 @@ export default function SignUp() {
     };
     console.log(d, d.email, d.password);
 
-    await signUp(auth, d.email, d.password)
+    await signUp(d.email, d.password)
       .then((userCredential) => {
         console.log(`cUser returned promise  ${userCredential.user}`);
-        setCurrentUser(userCredential.user);
+        // setCurrentUser(userCredential.user);
+        setLoading(true);
         navigate('/') 
       })
       .catch((err) => {

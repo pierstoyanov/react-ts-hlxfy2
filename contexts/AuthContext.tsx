@@ -9,6 +9,7 @@ import { User, UserCredential, createUserWithEmailAndPassword, signInWithEmailAn
 export interface IAuthContext {
     currentUser: User | null,
     setCurrentUser: Dispatch<any>,
+    setLoading: any,
     login: any,
     logout: any,
     signUp: any,
@@ -23,20 +24,24 @@ export const useAuth = () => {
 }
 
 export function AuthContextProvider({children}) {
-    const [currentUser, setCurrentUser] = useState< any | null>(null);
+    const [currentUser, setCurrentUser] = useState<any | null>(null);
     const [loading, setLoading] = useState(false);
 
 
     useEffect(() => {
-       auth.onAuthStateChanged((user) => {
-        setCurrentUser(user);
-        console.log(`cUser in context ${currentUser}`);
-        setLoading(false);
-       }); 
-    }, []);
+        const unusubscribe = auth.onAuthStateChanged((user) => {
+            console.log("foo " + user);
+            setCurrentUser(user);
+            console.log("bar " + currentUser);
+            setLoading(false);
+       });
+    //    console.log(`bar + ${currentUser}`); 
+    //console.log("bar " + currentUser);
+       return unusubscribe; 
+    }, [currentUser]);
 
     function login (email: string, password: string) {
-        return signInWithEmailAndPassword(auth, email,password);
+        return signInWithEmailAndPassword(auth, email, password);
     }
 
     const signUp = (email: string, password: string) => {
@@ -54,7 +59,7 @@ export function AuthContextProvider({children}) {
     //const value = {currentUser, setCurrentUser, login, logout, signUp, getUser}
 
     return (
-    <AuthContext.Provider value={{ currentUser, setCurrentUser, login, signUp, logout, getUser }}>
+    <AuthContext.Provider value={{ currentUser, setCurrentUser, setLoading, login, signUp, logout, getUser }}>
         {!loading && children}
     </AuthContext.Provider>
     );

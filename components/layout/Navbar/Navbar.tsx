@@ -29,7 +29,7 @@ const settings = [
     {name: 'Profile', path: "/profile"},
     {name: 'My Invoices', path: "/myinv"},
     {name: 'Dashboard', path: "/dashboard"},
-    {name: 'Logout', path: ""}
+    {name: 'Logout', path: "/logout"}
 ];
 
 const Navbar = (): JSX.Element => {
