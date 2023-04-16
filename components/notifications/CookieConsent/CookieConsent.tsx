@@ -43,10 +43,8 @@ const CookieConsent = (): JSX.Element => {
       setOpen(true);
     }
     else if (cookie.messageShown == 0) {
-      console.log('bar')
       setOpen(true)
     }
-    console.log('barfoo')
   }, []);
 
 
