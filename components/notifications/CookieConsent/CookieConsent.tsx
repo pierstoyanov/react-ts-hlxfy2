@@ -36,13 +36,13 @@ const CookieConsent = (): JSX.Element => {
       console.log('foo')
       // create cookie, open dialogue
       updateCookie({
-        messageShown: false,
-        consent: false
+        messageShown: 0,
+        consent: 0
       });
 
       setOpen(true);
     }
-    else if (cookie.messageShown == false) {
+    else if (cookie.messageShown == 0) {
       console.log('bar')
       setOpen(true)
     }
@@ -50,9 +50,9 @@ const CookieConsent = (): JSX.Element => {
   }, []);
 
 
-  const setResultInCookie = (consent: Boolean) => {
+  const setResultInCookie = (consent: Number) => {
     const newVars = {
-      messageShown: true,
+      messageShown: 1,
       consent: consent
     }
     
@@ -63,8 +63,8 @@ const CookieConsent = (): JSX.Element => {
 
   const closeDiag = () => {
     const newVars = {
-      messageShown: true,
-      consent: false
+      messageShown: 1,
+      consent: 0
     }
     
     updateCookie(newVars);
@@ -95,10 +95,10 @@ const CookieConsent = (): JSX.Element => {
           </DialogContent>
           <DialogActions>
             <Tooltip title={t("cookies-disagree-explain")}>
-              <Button onClick={() => setResultInCookie(false)}>{t("cookies-disagree")}</Button>
+              <Button onClick={() => setResultInCookie(0)}>{t("cookies-disagree")}</Button>
             </Tooltip>
             <Tooltip title={t("cookies-agree-explain")}>
-              <Button onClick={() => setResultInCookie(true)}>{t("cookies-agree")}</Button>
+              <Button onClick={() => setResultInCookie(1)}>{t("cookies-agree")}</Button>
             </Tooltip>
           </DialogActions>
         </Dialog>
