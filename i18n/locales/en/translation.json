@@ -9,7 +9,8 @@
     "label": "Username",
     "placeholder": "username",
     "fname": "First Name",
-    "lname": "Last Name"
+    "lname": "Last Name",
+    "remMsg": "This will permanently delete your user. Please, enter your email to confirm."
   },
   "email": {
     "label": "Email",
@@ -21,6 +22,9 @@
     "placeholder": "******",
     "forgotten": "Forgot password?"
   },
+  "delete": "Delete",
+  "confirm": "Confirm",
+  "cancel": "Cancel",
   "location": "Enter the location",
   "Address": "Enter the address",
   "signIn": "Sign in",
