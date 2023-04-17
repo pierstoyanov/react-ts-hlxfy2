@@ -2,19 +2,20 @@ import * as React from 'react';
 import firebase from 'firebase/app';
 import { Dispatch, createContext, useContext, useEffect, useState } from "react";
 import { auth } from "../firebase/firebase.config";
-import { User, UserCredential, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { User, UserCredential, createUserWithEmailAndPassword, deleteUser, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 
 // TODO
 export interface IAuthContext {
-    currentUser: User | null,
-    setCurrentUser: Dispatch<any>,
-    setLoading: any,
+    currUser: User | null,
+    // setCurrUser: Dispatch<any>,
+    // setLoading: any,
     login: any,
     logout: any,
     signUp: any,
-    getUser: any
-
+    getUser: any,
+    getCurrUser: any,
+    remUser: any
 };
 
 export const AuthContext = createContext({} as IAuthContext);
@@ -24,21 +25,21 @@ export const useAuth = () => {
 }
 
 export function AuthContextProvider({children}) {
-    const [currentUser, setCurrentUser] = useState<any | null>(null);
+    const [currUser, setCurrUser] = useState<any | null>(null);
     const [loading, setLoading] = useState(false);
 
 
     useEffect(() => {
         const unusubscribe = auth.onAuthStateChanged((user) => {
-            console.log("foo " + user);
-            setCurrentUser(user);
-            console.log("bar " + currentUser);
+            setCurrUser(user);
+            // console.log("bar " + currUser);
+            // console.log(auth.currentUser)
+            //console.log(currUser)
             setLoading(false);
        });
-    //    console.log(`bar + ${currentUser}`); 
-    //console.log("bar " + currentUser);
-       return unusubscribe; 
-    }, [currentUser]);
+
+       return () => {unusubscribe()};
+    }, []);
 
     function login (email: string, password: string) {
         return signInWithEmailAndPassword(auth, email, password);
@@ -52,14 +53,31 @@ export function AuthContextProvider({children}) {
         return signOut(auth);
     }
 
+    const remUser = () => {
+        if (auth.currentUser !== null)
+        {
+            // todo ask reauth
+            return deleteUser(auth.currentUser);
+        }
+        else
+        {
+            return 
+        }
+    }
+
     const getUser = () => {
         return auth.currentUser;
     }
+    
+    const getCurrUser = () => {
+        return currUser;
+    }
+
 
     //const value = {currentUser, setCurrentUser, login, logout, signUp, getUser}
-
+    // , setCurrUser, setLoading,
     return (
-    <AuthContext.Provider value={{ currentUser, setCurrentUser, setLoading, login, signUp, logout, getUser }}>
+    <AuthContext.Provider value={{  currUser, login, signUp, logout, getUser, getCurrUser, remUser }}>
         {!loading && children}
     </AuthContext.Provider>
     );

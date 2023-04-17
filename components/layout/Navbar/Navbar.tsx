@@ -33,7 +33,7 @@ const settings = [
 ];
 
 const Navbar = (): JSX.Element => {
-    const { currentUser } = useAuth();
+    const { currUser, getCurrUser } = useAuth();
 
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);    
@@ -52,7 +52,7 @@ const Navbar = (): JSX.Element => {
     <AppBar position="static">
         <Container maxWidth="xl">
         <Toolbar disableGutters>
-            {currentUser != null && <>
+            {getCurrUser() != null && <>
             {/* User menu */}
             <Box sx={{ flexGrow: 1 }}>
                 <Tooltip title="Open settings">

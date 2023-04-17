@@ -36,7 +36,7 @@ const theme = createTheme();
 
 export default function SignUp() {
   const { t } = useTranslation();
-  const { setCurrentUser, setLoading, signUp } = useAuth();
+  const { signUp } = useAuth();
   const navigate = useNavigate();
 
 
@@ -53,12 +53,10 @@ export default function SignUp() {
       .then((userCredential) => {
         console.log(`cUser returned promise  ${userCredential.user}`);
         // setCurrentUser(userCredential.user);
-        setLoading(true);
         navigate('/') 
       })
       .catch((err) => {
-        const errCode = err.code;
-        const errMsg = err.message;
+        const [errCode, errMsg] = [err.code, err.message];
         console.log(errCode, "\n", errMsg)
         // todo snackbar msg
       })

@@ -11,33 +11,38 @@ import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useTranslation } from "react-i18next";
 
-import { Link as RouterLink } from "react-router-dom";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { CssBaseline, Snackbar } from "@mui/material";
 import { useAuth } from "../../../contexts/AuthContext";
+import { auth } from "../../../firebase/firebase.config";
 
 
 const Login = () => {
   const { t } = useTranslation();
   const [ email, setEmail ] = useState<string | null>(null);
-  const { setCurrentUser, login } = useAuth();
+  const { getCurrUser, login } = useAuth();
+  const navigate = useNavigate();
 
   const regex = new RegExp('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}');
 
   const handleSubmit = async (event) => {
+    console.log(getCurrUser())
+
+    
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const d = {
       email: data.get("email"),
       password: data.get("password"),
     }
-    console.log();
+
     await login(d.email, d.password)
       .then((userCredential) => {
-        setCurrentUser(userCredential);
+        console.log(getCurrUser())
+        navigate('/') 
       })
       .catch((err) => {
-        const errCode = err.code;
-        const errMsg = err.message;
+        const [errCode, errMsg] = [err.code, err.message];
         console.log(errCode, "\n", errMsg)
         // todo snackbar msg
       })
