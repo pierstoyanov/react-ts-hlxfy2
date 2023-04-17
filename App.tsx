@@ -18,6 +18,8 @@ import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 import useCookie from './hooks/useCookie';
 import SignUp from './components/user/SignUp/SignUp';
 import Logout from './components/user/Logout/Logout';
+import Profile from './components/user/Profile/Profile';
+import Remove from './components/user/Remove/Remove';
 const Login = React.lazy(() => import('./components/user/Login/Login'));
 const About = React.lazy(() => import('./components/About/About'))
 
@@ -40,11 +42,16 @@ export default function App() {
       <div>{<Layout.Navbar />}</div> 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/loading" element={<LoadingScreen />} />
+
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/logout" element={<Logout />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/rmu" element={<Remove />} />
+
         <Route path="/about" element={<About />} />
-        <Route path="/loading" element={<LoadingScreen />} />
-        <Route path="/logout" element={<Logout />} /> 
+
       </Routes>
     </div>
     <footer>
