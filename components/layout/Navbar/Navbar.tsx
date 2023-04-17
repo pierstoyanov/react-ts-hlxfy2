@@ -17,23 +17,26 @@ import { Divider } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const pages = [
-    { name: 'Home', path: "/" },
+    { name: 'Home',  path: "/" },
     { name: 'Sign In', path: "login" },
     { name: 'About', path: "about" }
 ];
 
 //  href == page reload, Link = spa
 const settings = [
+    {name: 'Dashboard', path: "/dashboard"},
     {name: 'Profile', path: "/profile"},
     {name: 'My Invoices', path: "/myinv"},
-    {name: 'Dashboard', path: "/dashboard"},
     {name: 'Logout', path: "/logout"}
 ];
 
 const Navbar = (): JSX.Element => {
     const { currUser, getCurrUser } = useAuth();
+
+    const { t } = useTranslation();
 
     const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
     const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);    
@@ -79,7 +82,7 @@ const Navbar = (): JSX.Element => {
                 {settings.map((setting) => (
                     <MenuItem key={setting.name} onClick={handleCloseUserMenu} 
                         component={Link} to={setting.path}>
-                    <Typography textAlign="center">{setting.name}</Typography>
+                    <Typography textAlign="center">{t(setting.name)}</Typography>
                     </MenuItem>
                 ))}
                 </Menu>
@@ -169,7 +172,7 @@ const Navbar = (): JSX.Element => {
                 {pages.map((p) => (
                 <MenuItem key={p.name} component={Link} to={p.path} 
                     onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{p.name}</Typography>
+                    <Typography textAlign="center">{t(p.name)}</Typography>
                 </MenuItem>
                 ))}
             </Menu>
@@ -185,7 +188,7 @@ const Navbar = (): JSX.Element => {
                 onClick={handleCloseNavMenu}
                 sx={{ my: 2, color: 'white', display: 'block' }}
                 >
-                {page.name}
+                {t(page.name)}
                 <Divider orientation="vertical" color="black" variant='middle' flexItem />
                 </Button>
             ))}

@@ -27,7 +27,7 @@
   "cancel": "Cancel",
   "location": "Enter the location",
   "Address": "Enter the address",
-  "signIn": "Sign in",
+  "Sign In": "Sign in",
   "signUp": "Sign in",
   "rememberMe": "Remember me",
   "noAcc": "Don't have an account? Sign Up\u27A1",
@@ -37,6 +37,11 @@
   "cookies-agree": "Agree",
   "cookies-agree-explain": "Functional and statisticals cookies will be used.",
   "disagree": "Disagree",
+  "cookies-disagree": "Do not consent",
   "cookies-disagree-explain": "Only necessary functional cookies will be used. No user information is collected.",
-  "marketing-msg": "I want to receive inspiration, marketing promotions and updates via email."
+  "marketing-msg": "I want to receive inspiration, marketing promotions and updates via email.",
+  "Profile": "My Profile",
+  "My Invoices": "My Invoices",
+  "Dashboard": "Dashboard",
+  "Logout": "Logout"
 }
