@@ -10,7 +10,8 @@ import './style.css';
 import { useTranslation, Trans } from 'react-i18next';
 // Components
 import Home from './components/Home/Home';
-import * as Usr from './components/user'
+import * as Usr from './components/user';
+import * as Item from './components/item';
 import * as Layout from './components/layout';
 import * as Msg from './components/notifications';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
@@ -43,6 +44,11 @@ export default function App() {
         <Route path="/logout" element={<Usr.Logout />} />
         <Route path="/profile" element={<Usr.Profile />} />
         {/* <Route path="/rmu" element={<Usr.RemoveUsr />} /> */}
+
+        <Route path="/create" element={<Item.Create />} />
+        <Route path="/read" element={<Item.Read />} />
+        <Route path="/update" element={<Item.Update />} />
+        <Route path="/delete" element={<Item.Delete />} />
 
         <Route path="/about" element={<About />} />
 
