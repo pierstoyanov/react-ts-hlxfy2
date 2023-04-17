@@ -2,25 +2,19 @@ import * as React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import './style.css';
 
-import Home from './components/Home/Home';
-import * as Layout from './components/layout';
-import * as Msg from './components/notifications';
-
 // Environment variables: 
 // webpack -> process.env.
 // vite buldler -> import.meta.env.
 
 // i18n
 import { useTranslation, Trans } from 'react-i18next';
-
-import LanguageSelector from './components/LanguageSelector';
+// Components
+import Home from './components/Home/Home';
+import * as Usr from './components/user'
+import * as Layout from './components/layout';
+import * as Msg from './components/notifications';
 import LoadingScreen from './components/LoadingScreen/LoadingScreen';
 import useCookie from './hooks/useCookie';
-import SignUp from './components/user/SignUp/SignUp';
-import Logout from './components/user/Logout/Logout';
-import Profile from './components/user/Profile/Profile';
-import RemoveUsr from './components/user/Remove/RemoveUsr';
-const Login = React.lazy(() => import('./components/user/Login/Login'));
 const About = React.lazy(() => import('./components/About/About'))
 
 
@@ -44,11 +38,11 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/loading" element={<LoadingScreen />} />
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/logout" element={<Logout />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/rmu" element={<RemoveUsr />} />
+        <Route path="/login" element={<Usr.Login />} />
+        <Route path="/signup" element={<Usr.SignUp />} />
+        <Route path="/logout" element={<Usr.Logout />} />
+        <Route path="/profile" element={<Usr.Profile />} />
+        {/* <Route path="/rmu" element={<Usr.RemoveUsr />} /> */}
 
         <Route path="/about" element={<About />} />
 

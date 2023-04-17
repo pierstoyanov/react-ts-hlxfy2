@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../../contexts/AuthContext";
-import RemoveUsr from "../Remove/RemoveUsr";
+import RemoveUsr from "../RemoveUsr/RemoveUsr";
 
 const Profile = () => {
   const { t } = useTranslation();
