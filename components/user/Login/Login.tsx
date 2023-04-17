@@ -75,7 +75,7 @@ const Login = () => {
         }}
       >
         <Typography component="h1" variant="h5">
-          {t("signIn")}
+          {t("Sign In")}
         </Typography>
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
@@ -111,7 +111,7 @@ const Login = () => {
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            {t("signIn")}
+            {t("Sign In")}
           </Button>
           <Grid container>
             <Grid item xs>

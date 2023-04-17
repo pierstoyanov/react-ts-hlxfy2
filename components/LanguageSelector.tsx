@@ -18,8 +18,8 @@ const LanguageSelector = (): JSX.Element => {
 
   return (
     <>
-    <Box sx = {{
-      display: {xs: "none", md: "flex" }
+    <Box sx = {{ flexGrow: 0,
+      display: { my: 2, xs: "none", md: "flex" }
     }}>
       <IconButton value="bg" onClick={chooseLanguage}>
         {getFlagEmoji("BG")}
@@ -30,7 +30,7 @@ const LanguageSelector = (): JSX.Element => {
       </IconButton>
     </Box>
 
-    <Box sx = {{
+    <Box sx = {{flexGrow: 0,
       display: {xs: "flex", md: "none" }
     }}>
       <Select value={selectedLanguage} onChange={chooseLanguage}>
