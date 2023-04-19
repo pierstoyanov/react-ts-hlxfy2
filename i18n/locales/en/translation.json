@@ -55,5 +55,6 @@
     "receiverId": "VAT Receiver",
     "item": "Item",
     "value": "Value"
-  }
+  },
+  "createdInv": "Created invoices"
 }
