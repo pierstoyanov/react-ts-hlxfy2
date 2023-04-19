@@ -26,7 +26,7 @@
   "confirm": "Confirm",
   "cancel": "Cancel",
   "location": "Enter the location",
-  "Address": "Enter the address",
+  "address": "Address",
   "Sign In": "Sign in",
   "signUp": "Sign in",
   "rememberMe": "Remember me",
@@ -43,5 +43,17 @@
   "Profile": "My Profile",
   "My Invoices": "My Invoices",
   "Dashboard": "Dashboard",
-  "Logout": "Logout"
+  "Logout": "Logout",
+  "create": "Create",
+  "createLabel": "Create a new Invoice",
+  "inv": {
+    "number": "Number",
+    "date": "Date",
+    "supplier": "Supplier",
+    "supplierId": "VAT Supplier",
+    "receiver": "Receiver",
+    "receiverId": "VAT Receiver",
+    "item": "Item",
+    "value": "Value"
+  }
 }
