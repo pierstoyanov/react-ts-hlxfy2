@@ -22,7 +22,8 @@ import { useTranslation } from 'react-i18next';
 const pages = [
     { name: 'Home',  path: "/" },
     { name: 'Sign In', path: "login" },
-    { name: 'About', path: "about" }
+    { name: 'About', path: "about" },
+    { name: 'create', path: "create" }
 ];
 
 //  href == page reload, Link = spa
